@@ -1,28 +1,44 @@
+#include "board.h"
 #include <iostream>
-
 using namespace std;
 
-void printRows(int rows) {
-  for (int i = 0; i < rows; i++) {
-    cout << " " << i << " ";
+Board::Board(unsigned int cols, unsigned int rows, bool matrSet) :
+  cols(cols),
+  rows(rows),
+  matrSet(matrSet)
+{}
+
+char Board::setMatriz() {
+  char defSym = '|';
+  char matriz[this->cols][this->rows] = {};
+  for (int i = 0; i < this->cols; i++) {
+    for (int j = 0; j < this->rows; j++) {
+      matriz[i][j] = defSym;
+    }
+  }
+  matrSet = true;
+  return matriz[this->cols][this->rows];
+}
+char Board::getMatriz() {
+  if (matrSet == false) {
+    char board = setMatriz();
+  }
+  return board;
+}
+
+void Board::printRows() {
+  for (int i = 0; i < this->rows; i++) {
+    cout << " " << (i+1) << " ";
   }
   cout << endl;
 }
-
-int board(const int cols, const int rows) {
-  char def = '|';
-  char matriz[cols][rows] = {};
-  for (int i = 0; i < cols; i++) {
-    for (int j = 0; j < rows; j++) {
-      matriz[i][j] = def;
-    }
-  }
-  printRows(rows);
-  for (int i = 0; i < cols; i++) {
-    for (int j = 0; j < rows; j++) {
-      cout << " " << matriz[i][j] << " ";
+void Board::printBoard() {
+  char board = getMatriz();
+  for (int i = 0; i < this->cols; i++) {
+    for (int j = 0; j < this->rows; j++) {
+      cout << " " << board << " ";
     }
     cout << endl;
   }
-  return 0;
 }
+
