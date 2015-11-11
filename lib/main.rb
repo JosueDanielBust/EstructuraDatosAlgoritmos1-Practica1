@@ -5,7 +5,7 @@ class Game
   def initialize(n)
     @cols = 2*n+1
     @rows = 2*n-1
-    initGame()
+    #initGame()
   end
 
   def initGame
