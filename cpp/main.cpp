@@ -9,8 +9,8 @@ int main() {
   cin >> n;
   unsigned int cols = 2*n+1;
   unsigned int rows = 2*n-2;
-  Board theBoard(cols, rows, false);
-  theBoard.getMatriz();
+  Board theBoard(cols, rows, 'x');
+  theBoard.setMatriz();
   theBoard.printRows();
   theBoard.printBoard();
   return 0;

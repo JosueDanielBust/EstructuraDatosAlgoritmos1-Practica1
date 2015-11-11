@@ -1,12 +1,10 @@
 all: main
 
-OBJECTS=main.o board.o
-
-main: $(OBJECTS)
-	g++ -o $@ $(OBJECTS)
-
 clean:
-	rm -f *.o main board *.cpp~ *.h~ *.out Makefile~
+	rm -f Makefile~ *.gemspec~ lib/*.rb~ bin/nraya~ cpp/*.cpp~
 
-debug: $(OBJECTS)
-	g++ -g main.cpp board.cpp
+rmgem:
+	rm -f nraya-0.0.1.gem
+
+gembuild:
+	gem build nraya.gemspec

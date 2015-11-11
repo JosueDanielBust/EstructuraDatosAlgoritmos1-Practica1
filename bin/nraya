@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'main'
+require 'board'
+
+$stdout.print "> Give me the n: "
+$stdout.flush
+n = gets.to_i
+
+$game = Game.new(n)
+puts $game
+
+begin
+  $game.initGame()
+rescue
+  puts "Unknow exception"
+end

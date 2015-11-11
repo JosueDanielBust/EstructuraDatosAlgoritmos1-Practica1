@@ -2,10 +2,10 @@
 #include <iostream>
 using namespace std;
 
-Board::Board(unsigned int cols, unsigned int rows, bool matrSet) :
+Board::Board(unsigned int cols, unsigned int rows, char matriz) :
   cols(cols),
   rows(rows),
-  matrSet(matrSet)
+  matriz(matriz)
 {}
 
 char Board::setMatriz() {
@@ -16,14 +16,7 @@ char Board::setMatriz() {
       matriz[i][j] = defSym;
     }
   }
-  matrSet = true;
   return matriz[this->cols][this->rows];
-}
-char Board::getMatriz() {
-  if (matrSet == false) {
-    char board = setMatriz();
-  }
-  return board;
 }
 
 void Board::printRows() {
@@ -33,10 +26,9 @@ void Board::printRows() {
   cout << endl;
 }
 void Board::printBoard() {
-  char board = getMatriz();
   for (int i = 0; i < this->cols; i++) {
     for (int j = 0; j < this->rows; j++) {
-      cout << " " << board << " ";
+      cout << " " << this->matriz[i][j] << " ";
     }
     cout << endl;
   }
