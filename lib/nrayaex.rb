@@ -1,0 +1,2 @@
+
+class BigNumberError < Exception; end

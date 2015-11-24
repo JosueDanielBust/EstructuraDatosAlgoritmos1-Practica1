@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'main'
 require 'board'
-require 'matrix'
+require 'nrayaex'
 
 $stdout.print "> Give me the n: "
 $stdout.flush
@@ -17,6 +17,8 @@ $game = Game.new(n, x)
 
 begin
   $game.initGame()
+rescue BigNumberError
+  puts "Exception: Number of selected row too big"
 rescue
   puts "Exception: 404 - Not found"
 end

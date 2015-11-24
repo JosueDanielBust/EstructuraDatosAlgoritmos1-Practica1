@@ -1,3 +1,5 @@
+require 'nrayaex'
+
 class Board
   attr_reader :cols, :rows, :matriz
   def initialize(cols, rows)
@@ -40,11 +42,18 @@ class Board
   end
 
   def setPoint(x, sym)
-    point = @cols+1
-    while $matriz[point][x] != '|' do
-      point = point - 1
+    if x < @rows
+      point = @cols+1
+      x -= 1
+      while $matriz[point][x] != '|' do
+        point = point - 1
+      end
+      $matriz[point][x] = sym
+      system 'clear' or system 'cls'
+      printBoard()
+    else
+      puts "Exception: Number of selected row too big"
+      raise BigNumberError.new
     end
-    $matriz[point][x] = sym
-    printBoard()
   end
 end

@@ -1,5 +1,6 @@
 require 'board'
 require 'player'
+require 'nrayaex'
 
 class Game
   attr_reader :cols, :rows, :n, :x, :tokens
@@ -15,6 +16,7 @@ class Game
   def initGame
     createPlayers()
     $board = Board.new(@rows, @cols)
+    turns()
   end
 
   def createPlayers
@@ -26,9 +28,22 @@ class Game
       $stdout.print "> Enter your symbol #{name.chomp}: "
       $stdout.flush
       sym = gets
-      player = Player.new(name, sym, @tokens)
+      player = Player.new(name, sym.chop!, @tokens)
       @playersArray.push(player)
       i += 1
     end
+  end
+
+  def turns
+    player = @playersArray.shift
+    if player.tokens != 0
+      $stdout.print "> Enter the column that you like play: "
+      $stdout.flush
+      x = gets.to_i
+      $board.setPoint(x, player.sym)
+      player.restToken()
+      @playersArray.push(player)
+    end
+    turns()
   end
 end
