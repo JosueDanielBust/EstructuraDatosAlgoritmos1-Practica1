@@ -9,10 +9,14 @@ $stdout.print "> Give me the n: "
 $stdout.flush
 n = gets.to_i
 
-$game = Game.new(n)
+$stdout.print "> Give me the number of players: "
+$stdout.flush
+x = gets.to_i
+
+$game = Game.new(n, x)
 
 begin
   $game.initGame()
 rescue
-  puts "Unknow exception"
+  puts "404 - Not found"
 end

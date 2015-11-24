@@ -1,7 +1,11 @@
 all: main
 
 clean:
-	rm -f Makefile~ *.gemspec~ lib/*.rb~ bin/nraya~ cpp/*.cpp~
+	rm -f Makefile~
+	rm -f *.gemspec~
+	rm -f lib/*.rb~
+	rm -f bin/nraya~
+	rm -f cpp/*.cpp~
 
 rmgem:
 	rm -f nraya-0.0.1.gem

@@ -4,3 +4,6 @@
 *.out
 Makefile~
 #*
+lib/*.rb~
+bin/nraya~
+nraya.gemspec~

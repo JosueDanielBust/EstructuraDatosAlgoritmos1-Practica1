@@ -1,11 +1,12 @@
 require 'board'
 
 class Game
-  attr_reader :cols, :rows
-  def initialize(n)
+  attr_reader :cols, :rows, :n, :x
+  def initialize(n, x)
     @cols = 2*n+1
     @rows = 2*n-1
-    #initGame()
+    @n = n
+    @x = x
   end
 
   def initGame

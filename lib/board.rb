@@ -1,44 +1,47 @@
-require 'matrix'
-
 class Board
   attr_reader :cols, :rows, :matriz
   def initialize(cols, rows)
     @cols = cols
     @rows = rows
     setMatriz()
-    printRows()
-    $matriz.to_readable
+    printBoard()
+    setPoint(2,3)
+    printBoard()
   end
-  
+
+  private
   def setMatriz
-    $matriz = Matrix.build(@rows, @cols) { '*' }
+    $matriz = Array.new(@rows) {Array.new(@cols, '*')}
   end
 
   def printRows
     i = 1
     while i < (rows-1) do
-      if i < 10 then
-        print " #{i} "
-      else
-        print " #{i}"
+      if i < 10 then print " #{i} "
+      else print " #{i}"
       end
       i += 1
     end
-    print "\n"
+    puts ''
   end
   
-end
-
-class Matrix
-  def to_readable
-    i = 0
-    self.each do |number|
-      print " " + number.to_s + " "
-      i+= 1
-      if i == self.column_size
-        print "\n"
-        i = 0
+  def printMatriz
+    $matriz.each do |i|
+      i.each do |j|
+        print " #{j} "
       end
+      puts ''
     end
+  end
+
+  def setPoint(x,y)
+    $matriz[x][y] = '?'
+  end
+  
+  public
+  def printBoard
+    printRows()
+    printMatriz()
+    puts ''
   end
 end
