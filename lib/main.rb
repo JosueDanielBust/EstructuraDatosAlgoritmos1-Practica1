@@ -40,7 +40,9 @@ class Game
       $stdout.print "> Enter the column that you like play: "
       $stdout.flush
       x = gets.to_i
-      $board.setPoint(x, player.sym)
+      y = $board.setPoint(x, player.sym)
+      player.setPosition(x,y)
+      player.getPositions()
       player.restToken()
       @playersArray.push(player)
     end

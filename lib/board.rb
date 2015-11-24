@@ -42,6 +42,7 @@ class Board
   end
 
   def setPoint(x, sym)
+    point = 0
     if x < @rows
       point = @cols+1
       x -= 1
@@ -55,5 +56,6 @@ class Board
       puts "Exception: Number of selected row too big"
       raise BigNumberError.new
     end
+    return point
   end
 end

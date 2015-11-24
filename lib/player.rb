@@ -15,10 +15,14 @@ class Player
   end
 
   def setPosition(x,y)
-    point = Array.new(x,y)
+    point = [x,y]
     @positions.push(point)
   end
 
+  def getPositions
+    return @positions
+  end
+  
   def checkWin
   end
 end
