@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.author       = 'Josue Daniel Bustamante - Santiago Baena'
   s.email        = 'jbusta16@eafit.edu.co'
   s.homepage     = 'http://github.com/JosueDanielBust/nraya'
-  s.files        = ["lib/main.rb", "lib/board.rb"]
+  s.files        = ["lib/main.rb", "lib/board.rb", "lib/player.rb"]
   s.license      = 'MIT'
   s.executables << 'nraya'
   s.post_install_message = "Thanks for installing nraya! We think you like this awesome game!"

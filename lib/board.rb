@@ -5,13 +5,11 @@ class Board
     @rows = rows
     setMatriz()
     printBoard()
-    setPoint(2,3)
-    printBoard()
   end
 
   private
   def setMatriz
-    $matriz = Array.new(@rows) {Array.new(@cols, '*')}
+    $matriz = Array.new(@rows) {Array.new(@cols, '|')}
   end
 
   def printRows
@@ -34,14 +32,19 @@ class Board
     end
   end
 
-  def setPoint(x,y)
-    $matriz[x][y] = '?'
-  end
-  
   public
   def printBoard
     printRows()
     printMatriz()
     puts ''
+  end
+
+  def setPoint(x, sym)
+    point = @cols+1
+    while $matriz[point][x] != '|' do
+      point = point - 1
+    end
+    $matriz[point][x] = sym
+    printBoard()
   end
 end

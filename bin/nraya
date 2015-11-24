@@ -18,5 +18,5 @@ $game = Game.new(n, x)
 begin
   $game.initGame()
 rescue
-  puts "404 - Not found"
+  puts "Exception: 404 - Not found"
 end
