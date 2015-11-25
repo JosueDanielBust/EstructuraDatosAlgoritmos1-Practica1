@@ -22,18 +22,30 @@ class Game
 
   def createPlayers
     i = 0
-    symbols = Array.new()
+    $symbols = ['.']
     until i >= @players
       $stdout.print "> Enter your name player #{i+1}: "
       $stdout.flush
       name = gets
-      $stdout.print "> Enter your symbol #{name.chomp}: "
-      $stdout.flush
-      sym = gets
-      player = Player.new(name, sym.chop!, @tokens)
-      @playersArray.push(player)
+      sym = getPlayerSym(name)
+      $symbols.push(sym)
+      player = Player.new(name, sym, @tokens)
+      @playersArray.push(player)    
       i += 1
     end
+  end
+
+  def getPlayerSym(name)
+    $stdout.print "> Enter your symbol #{name.chomp}: "
+    $stdout.flush
+    sym = gets
+    sym = sym.chr
+    if valSym(sym) == true then getPlayerSym(name) else return sym end
+  end
+
+  def valSym(sym)
+    result = $symbols.include?(sym)
+    return result
   end
 
   def turns
