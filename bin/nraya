@@ -17,8 +17,12 @@ $game = Game.new(n, x)
 
 begin
   $game.initGame()
-rescue BigNumberError
+rescue WeHaveWin
+  puts ''
+rescue BigNumber
   puts "Exception: Number of selected row too big"
+rescue NoMoreTokens
+  puts "Exception: Upps... No more tokens found - No one wins :("
 rescue
   puts "Exception: 404 - Not found"
 end

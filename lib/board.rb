@@ -1,3 +1,4 @@
+require 'matrix'
 require 'nrayaex'
 
 class Board
@@ -54,8 +55,13 @@ class Board
       printBoard()
     else
       puts "Exception: Number of selected row too big"
-      raise BigNumberError.new
+      raise BigNumber
     end
     return point
   end
+
+  def getMatriz
+    return $matriz
+  end
+  
 end

@@ -8,13 +8,19 @@ clean:
 	rm -f cpp/*.cpp~
 
 rmgem:
-	rm -f nraya-0.0.1.gem
+	rm -f nraya-0.0.*.gem
 
 gembuild:
 	gem build nraya.gemspec
 
 main:
-	rm -f nraya-0.0.1.gem
+	rm -f nraya-0.0.*.gem
 	gem build nraya.gemspec
-	sudo gem install nraya-0.0.1.gem
+	sudo gem install nraya-0.0.*.gem
+	nraya
+
+win:
+	rm -f nraya-0.0.*.gem
+	gem build nraya.gemspec
+	gem install nraya-0.0.*.gem
 	nraya

@@ -21,6 +21,7 @@ class Game
 
   def createPlayers
     i = 0
+    symbols = Array.new()
     until i >= @players
       $stdout.print "> Enter your name player #{i+1}: "
       $stdout.flush
@@ -37,7 +38,8 @@ class Game
   def turns
     player = @playersArray.shift
     if player.tokens != 0
-      $stdout.print "> Enter the column that you like play: "
+      $stdout.print "> Enter the column that you like play "
+      $stdout.print "(#{player.name.chomp} :: #{player.sym} :: #{player.tokens}): "
       $stdout.flush
       x = gets.to_i
       y = $board.setPoint(x, player.sym)
@@ -45,7 +47,14 @@ class Game
       player.getPositions()
       player.restToken()
       @playersArray.push(player)
+    else
+      raise NoMoreTokens
     end
-    turns()
+    if player.checkWin == true then
+      puts "Congrats #{player.name.chomp}! You won on nraya game!"
+      raise WeHaveWin
+    else
+      turns()
+    end
   end
 end
