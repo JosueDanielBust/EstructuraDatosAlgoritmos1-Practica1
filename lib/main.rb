@@ -3,7 +3,7 @@ require 'player'
 require 'nrayaex'
 
 class Game
-  attr_reader :cols, :rows, :n, :x, :tokens
+  attr_reader :cols, :rows, :n, :x, :tokens, :winner
   def initialize(n, players)
     @cols = 2*n+1
     @rows = 2*n-1
@@ -11,6 +11,7 @@ class Game
     @players = players
     @tokens = ((2*n-1)*(2*n-2)/players)
     @playersArray = Array.new()
+    @winner = false
   end
 
   def initGame
@@ -36,25 +37,25 @@ class Game
   end
 
   def turns
-    player = @playersArray.shift
-    if player.tokens != 0
-      $stdout.print "> Enter the column that you like play "
-      $stdout.print "(#{player.name.chomp} :: #{player.sym} :: #{player.tokens}): "
-      $stdout.flush
-      x = gets.to_i
-      y = $board.setPoint(x, player.sym)
-      player.setPosition(x,y)
-      player.getPositions()
-      player.restToken()
-      @playersArray.push(player)
-    else
-      raise NoMoreTokens
-    end
-    if player.checkWin == true then
-      puts "Congrats #{player.name.chomp}! You won on nraya game!"
-      raise WeHaveWin
-    else
-      turns()
+    while @winner == false do
+      player = @playersArray.shift
+      if player.tokens != 0
+        $stdout.print "> Enter the column that you like play "
+        $stdout.print "(#{player.name.chomp} :: #{player.sym} :: #{player.tokens}): "
+        $stdout.flush
+        x = gets.to_i
+        y = $board.setPoint(x, player.sym)
+        player.setPosition(x,y)
+        player.restToken()
+        @playersArray.push(player)
+      else
+        raise NoMoreTokens
+      end
+      if player.checkWin == true then
+        @winner = true
+        puts "Congrats #{player.name.chomp}! You won on nraya game!"
+        raise WeHaveWin
+      end
     end
   end
 end

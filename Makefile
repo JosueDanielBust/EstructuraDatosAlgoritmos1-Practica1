@@ -5,7 +5,7 @@ clean:
 	rm -f *.gemspec~
 	rm -f lib/*.rb~
 	rm -f bin/nraya~
-	rm -f cpp/*.cpp~
+	rm -f tests/*.txt~
 
 rmgem:
 	rm -f nraya-0.0.*.gem
@@ -13,14 +13,14 @@ rmgem:
 gembuild:
 	gem build nraya.gemspec
 
-main:
-	rm -f nraya-0.0.*.gem
-	gem build nraya.gemspec
-	sudo gem install nraya-0.0.*.gem
-	nraya
-
 win:
 	rm -f nraya-0.0.*.gem
 	gem build nraya.gemspec
 	gem install nraya-0.0.*.gem
+	nraya
+
+main:
+	rm -f nraya-0.0.*.gem
+	gem build nraya.gemspec
+	sudo gem install nraya-0.0.*.gem
 	nraya

@@ -1,8 +1,8 @@
 # nraya #
-Practica 1 - Estructura de Datos y Algoritmos 1
+> Practica 1 - Estructura de Datos y Algoritmos 1
 ---
 
-## For fix ##
+##### For fix #####
 * Verification scope of horizontals stripes
 * Verification for different symbols
 * CPU mode
